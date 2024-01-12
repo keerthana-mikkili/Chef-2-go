@@ -1,0 +1,67 @@
+@import url("./resources/fonts/wolf.css"); 
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgb(186, 182, 177); 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(113, 113, 112); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(113, 113, 112); 
+}
+body {
+  overflow-x: hidden; /* Hide scrollbars */
+}
+/* For smaller screens */
+@media (max-width: 768px) {
+  .container {
+    width: 100%; /* Adjust width for smaller screens */
+    padding: 1rem; /* Reduce padding */
+  }
+}

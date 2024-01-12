@@ -1,0 +1,28 @@
+{
+  "name": "Chef-2-Go",
+  "short_name": "Chef-2-Go-project-peri-peri",
+  "theme_color": "#2196f3",
+  "background_color": "#2196f3",
+  "display": "standalone",
+  "orientation": "landscape",
+  "scope": "/",
+  "start_url": "/",
+  "icons":[
+    {
+      "src":"maskable.png",
+      "sizes":"196x196",
+      "type":"image/png",
+      "purpose":"any maskable"
+    },
+    {
+      "src":"logo256.png",
+      "sizes":"256x256",
+      "type":"image/png"
+    },
+    {
+      "src":"logo512.png",
+      "sizes":"512x512",
+      "type":"image/png"
+    }
+  ]
+}

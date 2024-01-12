@@ -1,0 +1,360 @@
+openapi: 3.1.0
+info:
+  title: User Management API
+  version: 1.0.0
+  description: API for managing user accounts
+
+
+paths:
+  /users:
+    post:
+      summary: Create user
+      security: 
+        - apikey_auth: []
+      description: Create a new user (chef, customer, or admin)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  enum: [chef, customer, admin]
+                name:
+                  type: string
+                email:
+                  type: string
+              required:
+                - type
+                - name
+                - email
+            example:
+              type: "chef"
+              name: "Jane Doe"
+              email: "jane@example.com"
+      responses:
+        '201':
+          description: User created successfully
+          content:
+            application/json:
+              example:
+                userId: 1
+                type: "chef"
+                name: "Jane Doe"
+                email: "jane@example.com"
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    get:
+      summary: Get all users
+      security: 
+        - apikey_auth: []
+      description: Retrieve a list of all users
+      responses:
+        '200':
+          description: Users found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UsersList"
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        '404':
+          description: Users not found
+
+  /users/{userId}:
+    get:
+      operationId: "get-user-by-id"
+      description: Get user details by ID
+      security: 
+        - apikey_auth: []
+      parameters:
+        - name: "userId"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    put:
+      summary: Update user
+      security: 
+        - apikey_auth: []
+      description: Update an existing user
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID of the user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+              required:
+                - name
+                - email
+            example:
+              name: "John Doe"
+              email: "john.doe@example.com"
+      responses:
+        '200':
+          description: User updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        '400':
+          description: Invalid input
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    delete:
+      summary: Delete user
+      security: 
+        - apikey_auth: []
+      description: Delete an existing user
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID of the user
+      responses:
+        '204':
+          description: User deleted successfully
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+components:
+  securitySchemes:
+    apikey_auth:
+      type: apiKey
+      in: header
+      name: api_key
+  schemas:
+    UsersList:
+      type: array
+      items:
+        $ref: "#/components/schemas/UsersList"
+    User:
+      type: object
+      properties:
+        user_id:
+          type: integer
+          examples:
+            - 1
+        username:
+          type: string
+          examples: 
+            - "chef_john"
+        name:
+          type: string
+          examples: 
+            - "John Doe"
+        bio:
+          type: string
+          examples: 
+            - "Experienced chef specializing in Italian cuisine."
+        profile_picture:
+          type: string
+          examples: 
+            - "/images/chef_john.jpg"
+        email:
+          type: string
+          examples: 
+            - "john@example.com"
+        phone_number:
+          type: string
+          examples: 
+            - "+1234567890"
+        address:
+          type: string
+          examples: 
+            - "123 Main Street, Cityville"
+        geolocation:
+          $ref: "#/components/schemas/Geolocation"
+        authentication:
+          $ref: "#/components/schemas/Authentication"
+        preferences:
+          $ref: "#/components/schemas/Preferences"
+        chef_specific:
+          $ref: "#/components/schemas/ChefSpecific"
+        customer_specific:
+          $ref: "#/components/schemas/CustomerSpecific"
+        security:
+          $ref: "#/components/securitySchemes/apikey_auth"
+    Geolocation:
+      type: object
+      properties:
+        latitude:
+          type: number
+          examples: 
+            - 37.7749
+        longitude:
+          type: number
+          examples: 
+            - -122.4194
+    Authentication:
+      type: object
+      properties:
+        api_key:
+          type: string
+          examples: 
+            - "abcdef123456"
+        oauth_providers:
+          type: array
+          items:
+            $ref: "#/components/schemas/OAuthProvider"
+    OAuthProvider:
+      type: object
+      properties:
+        provider:
+          type: string
+          examples: 
+            - "google"
+        oauth_token:
+          type: string
+          examples: 
+            - "xyz789"
+    Preferences:
+      type: object
+      properties:
+        cuisine:
+          type: string
+          examples: 
+            - "Italian"
+        dietary_restrictions:
+          type: array
+          items:
+            type: string
+    ChefSpecific:
+      type: object
+      properties:
+        certifications:
+          type: array
+          items:
+            type: string
+        menu_listings:
+          type: array
+          items:
+            $ref: "#/components/schemas/MenuListing"
+    MenuListing:
+      type: object
+      properties:
+        dish_name:
+          type: string
+          examples: 
+            - "Spaghetti Bolognese"
+        price:
+          type: number
+          examples: 
+            - 15.99
+        ingredients:
+          type: array
+          items:
+            type: string
+    CustomerSpecific:
+      type: object
+      properties:
+        order_history:
+          type: array
+          items:
+            $ref: "#/components/schemas/OrderHistory"
+    OrderHistory:
+      type: object
+      properties:
+        order_id:
+          type: integer
+          examples: 
+            - 101
+        chef_id:
+          type: integer
+          examples: 
+            - 1
+        dish_name:
+          type: string
+          examples: 
+            - "Spaghetti Bolognese"
+        price:
+          type: number
+          examples: 
+            - 15.99
+        status:
+          type: string
+          examples: 
+            - "delivered"
+        date_ordered:
+          type: string
+          examples: 
+            - "2023-01-15"
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+          examples: 
+            - "AuthenticationError"
+        message:
+          type: string
+          description: Error message
+          examples: 
+            - "user is not authenticated"

@@ -1,0 +1,27 @@
+{
+  "name": "final-project-peri-peri",
+  "version": "1.0.0",
+  "description": "[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/OuSBNpwM)",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently \"npm run frontend\" \"npm run backend\"",
+    "frontend": "cd chef-2-go-frontend && npm start",
+    "backend": "cd chef-2-go-backend && npm start",
+    "ins": "concurrently \"npm run frontendInstall\" \"npm run backendInstall\"",
+    "frontendInstall": "cd chef-2-go-frontend && npm install --f",
+    "backendInstall": "cd chef-2-go-backend && npm install --f"
+  },
+  "author": "chef-2-go team",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.2",
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
