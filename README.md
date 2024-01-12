@@ -87,8 +87,9 @@ Token-based authentication is implemented for user sessions.
 The Ingredient API is a Node.js-based application utilizing Express and MongoDB with Mongoose, designed to manage information about ingredients and the stores where they are available. The project follows a structured architecture with separate modules for defining the schema (ingredient-model.js), handling CRUD operations (ingredient-service.js), managing HTTP requests and responses (ingredient-controller.js), and defining API routes (ingredient-routes.js). 
 
 ### Steps to set up Project Locally:
-git clone url Install all dependencies locally - cmd and run the project using: 
+1. git clone url Install all dependencies locally - cmd : 
 > npm install
+2. run the project using: 
 > npm start 
 
 check changes with help of ide. git add . ( to add changes in your local branch) git commit -m "give approriate msg" ( cmd to stage changes) git push origin main ( cmd to push changes to global branch)
