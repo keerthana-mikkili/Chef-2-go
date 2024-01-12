@@ -1,9 +1,6 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/OuSBNpwM)
-
 # Project Title: Chef2go
 
 Welcome to the Chef2go website repository.
-https://northeastern-my.sharepoint.com/:v:/g/personal/damavenkateshraj_b_northeastern_edu/EQgJTeLVwxpEm8zXRxZ5HL4BxkEg2rQZ1ZOGusACXgFJWg?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=EgQCfk
 
 ### Project Description
 Chef2go is a dedicated online platform designed exclusively for students, serving as a convenient all-in-one solution for culinary needs. Beyond just cooking, the platform provides students with access to premium subscription videos. A standout feature includes the opportunity to delve into a thoughtfully curated assortment of recipes crafted by chefs, offering a distinctive and enriching culinary journey. Whether students are in search of a swift meal or seeking inspiration for their culinary ventures, this platform is intricately crafted to address their diverse needs. It stands as the ultimate destination for food enthusiasts on campus.
@@ -30,17 +27,19 @@ In essence, Chef2go redefines the online food platform landscape by offering not
 
 ### Run Locally
 
-Clone the project
+1. Clone the project
 
 ```bash
   git clone https://github.com/info-6150-fall-2023/final-project-peri-peri
 ```
 
-Go to the project directory
+2. Go to the Backend directory- chef-2-go-backend and run
+> npm i 
+> npm start
 
-```bash
-  use live-server extension on vs code
-```
+3. Go to the Frontend directory- chef-2-go-backend and run
+> npm i 
+> npm start
 
 ### Rest API for Recipe
 
@@ -91,13 +90,11 @@ The Ingredient API is a Node.js-based application utilizing Express and MongoDB 
 
 ![alt text](https://github.com/info-6150-fall-2023/final-project-peri-peri/blob/main/docs/Chef2go.png)
 
-Steps to set up Project Locally:
-
+### Steps to set up Project Locally:
 git clone url Install all dependencies locally - cmd :
 > npm install
 and run the project using: 
 > npm start 
-
 
 check changes with help of ide. git add . ( to add changes in your local branch) git commit -m "give approriate msg" ( cmd to stage changes) git push origin main ( cmd to push changes to global branch)
 
@@ -105,5 +102,5 @@ check changes with help of ide. git add . ( to add changes in your local branch)
 
 - [@Basavaraj Patil](https://github.com/basupatil1213)
 - [@Bhuvan Dama Venkatesh Raj](https://github.com/BhuvanDV)
-- [@Keerthana Mikkili](https://github.com/keerthanamikkili)
+- [@Keerthana Mikkili](https://github.com/keerthana-mikkili)
 - [@Shreyas Hanamantgouda Patil](https://github.com/shreyes-patil)
